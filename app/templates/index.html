@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VLM Demo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>VLM Demo</h1>
+  
+  <!-- Camera selection dropdown -->
+  <div>
+    <label for="cameraSelect">Select Camera:</label>
+    <select id="cameraSelect"></select>
+  </div>
+
+  <!-- Video preview -->
+  <div id="video-container">
+    <video id="video" width="640" height="480" autoplay playsinline></video>
+  </div>
+
+  <!-- Prompt and answer section -->
+  <div id="prompt-section">
+    <label for="promptInput">Enter Prompt:</label>
+    <input type="text" id="promptInput" placeholder="Type your prompt..." />
+
+    <button id="captureButton">Capture & Send Prompt</button>
+  </div>
+
+  <div id="answer-section">
+    <label>Answer:</label>
+    <div id="answerBox"></div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
