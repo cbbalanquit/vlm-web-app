@@ -8,5 +8,8 @@ dependencies = [
     "flask>=3.1.0",
     "numpy>=2.2.1",
     "opencv-python>=4.10.0.84",
+    "pillow>=11.1.0",
     "python-dotenv>=1.0.1",
+    "torch>=2.5.1",
+    "transformers>=4.47.1",
 ]

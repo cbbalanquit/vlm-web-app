@@ -91,14 +91,21 @@ document.addEventListener("DOMContentLoaded", function() {
     canvas.height = video.videoHeight;
     const ctx = canvas.getContext("2d");
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    const base64Image = canvas.toDataURL("image/jpeg");
+  
+    // Convert to base64 data URL (JPEG or PNG)
+    const base64Image = canvas.toDataURL("image/jpeg"); 
     const prompt = promptInput.value;
 
-    fetch("/process_image", {
+    console.log(base64Image);
+  
+    // POST to your new route
+    fetch("/api/infer_smolvlm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ image: base64Image, prompt: prompt })
+      body: JSON.stringify({
+        image: base64Image,
+        prompt: prompt
+      })
     })
       .then(response => response.json())
       .then(data => {

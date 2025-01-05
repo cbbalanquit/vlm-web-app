@@ -1,7 +1,8 @@
 import os
 from flask import Flask
 
-from .routes import main_routes
+from .routes.main_routes import main_bp
+from .routes.inference_routes import inference_bp
 from .config import get_config 
 
 def create_app():
@@ -18,6 +19,7 @@ def create_app():
     except OSError:
         pass
 
-    app.register_blueprint(main_routes.main_bp)
+    app.register_blueprint(main_bp)
+    app.register_blueprint(inference_bp, url_prefix="/api")
 
     return app
