@@ -27,7 +27,6 @@ def infer_smolvlm():
 
     try:
         image_data = base64.b64decode(image_b64)
-        print(f"Decoded image length: {len(image_data)}")
     except Exception as e:
         return jsonify({"error": f"Invalid base64 data: {str(e)}"}), 400
 
