@@ -7,29 +7,30 @@
 </head>
 <body>
   <h1>VLM Demo</h1>
-  
-  <!-- Camera selection dropdown -->
-  <div>
-    <label for="cameraSelect">Select Camera:</label>
-    <select id="cameraSelect"></select>
-  </div>
+  <!--2 columns: Camera Section and Prompt & Answer Section-->
+  <div id="main-container">
+    <div id="camera-section">
+      <div>
+        <label for="cameraSelect">Select Camera:</label>
+        <select id="cameraSelect"></select>
+      </div>
+      <div id="video-container">
+        <video id="video" autoplay playsinline></video>
+      </div>
+    </div>
 
-  <!-- Video preview -->
-  <div id="video-container">
-    <video id="video" width="640" height="480" autoplay playsinline></video>
-  </div>
+    <div id="prompt-and-answer-section">
+      <div id="prompt-section">
+        <label for="promptInput">Enter Prompt:</label>
+        <input type="text" id="promptInput" placeholder="Type your prompt..." />
 
-  <!-- Prompt and answer section -->
-  <div id="prompt-section">
-    <label for="promptInput">Enter Prompt:</label>
-    <input type="text" id="promptInput" placeholder="Type your prompt..." />
+        <button id="captureButton">Capture & Send Prompt</button>
+      </div>
 
-    <button id="captureButton">Capture & Send Prompt</button>
-  </div>
-
-  <div id="answer-section">
-    <label>Answer:</label>
-    <div id="answerBox"></div>
+      <div id="answer-section">
+        <div id="answerBox"></div>
+      </div>
+    </div>
   </div>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>

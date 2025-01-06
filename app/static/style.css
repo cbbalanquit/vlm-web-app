@@ -1,25 +1,141 @@
-/* style.css */
-
+/* ----- Global Styles ----- */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #1d1d1d;  /* dark background */
+  color: #ffffff;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+/* 
+   ---- MOBILE-FIRST APPROACH ----
+   By default, stack (single column).
+   Then for screens >= 768px, switch to row (two columns).
+*/
+
+/* Default: single column (vertical) */
+#main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center; 
+  align-items: flex-start;
+}
+
+/* For screens >= 768px, switch to side-by-side */
+@media (min-width: 600px) {
+  #main-container {
+    flex-direction: row;       /* two columns side by side */
+    align-items: flex-start;   
   }
-  
-  #video-container {
-    margin: 20px 0;
-    border: 2px solid #ccc;
-    display: inline-block;
-    padding: 5px;
+
+  /* Camera ~30%, Prompt & Answer ~70% */
+  #camera-section {
+    flex: 0 0 35%; 
+    box-sizing: border-box;
   }
-  
-  #prompt-section {
-    margin: 20px 0;
+
+  #prompt-and-answer-section {
+    flex: 0 0 65%; 
+    box-sizing: border-box;
   }
-  
-  #answer-section {
-    margin-top: 20px;
-    border: 2px dashed #aaa;
-    padding: 10px;
-    width: 640px;
-  }
-  
+}
+
+/* ----- Camera Section ----- */
+#camera-section > div {
+  margin-bottom: 1rem;
+}
+
+#cameraSelect {
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 180px;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+  color: #000;
+}
+
+#video-container {
+  border: 1px solid #ccc;
+  padding: 2px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#video {
+  display: block;
+  width: 100%;
+  height: auto;  /* preserve aspect ratio */
+}
+
+/* ----- Prompt & Answer Section ----- */
+#prompt-section {
+  margin-top: 2.5rem;
+}
+
+#prompt-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+#promptInput {
+  width: 100%;
+  max-width: 400px; /* optional: a limit on wide screens */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+  color: #000;
+}
+
+#captureButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#captureButton:hover {
+  background-color: #0056b3;
+}
+
+/* ----- Answer Section ----- */
+#answer-section {
+  margin-top: 1rem;
+}
+
+#answer-section label {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+#answerBox {
+  border: 2px dashed #aaa;
+  background-color: #fff;
+  padding: 10px;
+  min-height: 80px;
+  max-width: 610px;        /* remove any fixed max-width constraints */
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  line-height: 1.2;
+  color: #000;  
+}
+
+#answerBox p {
+  margin: 1rem 1; /* reduce paragraph margin */
+}

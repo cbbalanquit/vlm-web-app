@@ -113,7 +113,17 @@ document.addEventListener("DOMContentLoaded", function() {
           console.error("Server Error:", data.error);
           answerBox.innerText = "Error: " + data.error;
         } else {
-          answerBox.innerText = data.answer;
+          let finalText = data.answer;
+
+          const assistantIndex = finalText.indexOf("Assistant:");
+          if (assistantIndex !== -1) {
+            finalText = finalText.substring(assistantIndex);
+          }
+
+          finalText = "Prompt: " + prompt + "\n\n" + finalText;
+          finalText = finalText.replace("Assistant:", "Response:");
+
+          answerBox.innerText = finalText;
         }
       })
       .catch(err => {
