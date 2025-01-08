@@ -19,7 +19,7 @@ model = AutoModelForVision2Seq.from_pretrained(
     "HuggingFaceTB/SmolVLM-Instruct",
     torch_dtype=torch.float16,
     quantization_config=quantization_config,
-).to(DEVICE)
+)#.to(DEVICE)
 
 def run_inference(image_data: bytes, user_prompt: str) -> str:
     """

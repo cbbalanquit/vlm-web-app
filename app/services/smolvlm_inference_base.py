@@ -1,19 +1,28 @@
 # app/services/smolvlm_inference.py
-
+import os
 import torch
 from PIL import Image
 from transformers import AutoProcessor, AutoModelForVision2Seq
 from transformers.image_utils import load_image
 from io import BytesIO
 import base64
+import logging
 
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+gpu_index = os.environ.get("GPU_INDEX", "0")
+DEVICE = f"cuda:{gpu_index}" if torch.cuda.is_available() else "cpu"
+print(f"Using device: {DEVICE}")
 
 # Load model and processor only once
 processor = AutoProcessor.from_pretrained("HuggingFaceTB/SmolVLM-Instruct")
 model = AutoModelForVision2Seq.from_pretrained(
     "HuggingFaceTB/SmolVLM-Instruct",
-    torch_dtype=torch.float16
+    torch_dtype=torch.bfloat16
 ).to(DEVICE)
 
 def run_inference(image_data: bytes, user_prompt: str) -> str:
@@ -44,7 +53,13 @@ def run_inference(image_data: bytes, user_prompt: str) -> str:
     inputs = processor(text=prompt, images=[pil_image], return_tensors="pt").to(DEVICE)
 
     # Generate outputs
-    generated_ids = model.generate(**inputs, max_new_tokens=100)
+    with torch.no_grad(), torch.amp.autocast('cuda'):
+        generated_ids = model.generate(**inputs, max_new_tokens=200)
     generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
+
+    gpu_memory = torch.cuda.memory_allocated(DEVICE) / (1024 ** 2)  # Convert to MiB
+    logging.info(f"GPU Memory Allocated: {gpu_memory} MiB")
+
+    torch.cuda.empty_cache()
 
     return generated_text
