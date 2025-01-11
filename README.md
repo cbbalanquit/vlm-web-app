@@ -1,6 +1,8 @@
 # VLM Demo
 This project is a demo of the VLM (Video Language Model) model. The VLM model is a multimodal model that combines video and text data to generate image or video captions.
 
+![image](https://github.com/user-attachments/assets/41bf9378-07b6-44d1-b6f3-233e19ff5b5f)
+
 Setup guide for running in:
 - [Usual Windows, Mac, or Linux with GPU](#usual-pc-with-gpu)
 - [Edge Device like Jetson Nano using ARM architecture](#edge-device-like-jetson-nano)
