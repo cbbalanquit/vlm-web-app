@@ -4,8 +4,8 @@ from app.services.llava_inference import run_inference
 
 inference_bp = Blueprint("inference_bp", __name__)
 
-@inference_bp.route("/infer_smolvlm", methods=["POST"])
-def infer_smolvlm():
+@inference_bp.route("/infer_vlm", methods=["POST"])
+def infer_vlm():
     """
     Expects JSON or form-data containing:
       - 'imageBase64': base64 string of the image

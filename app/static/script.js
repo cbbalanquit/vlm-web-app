@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(base64Image);
   
     // POST to your new route
-    fetch("/api/infer_smolvlm", {
+    fetch("/api/infer_vlm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
