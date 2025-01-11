@@ -138,6 +138,7 @@ h1 {
   white-space: pre-wrap; /* Ensures text wraps to the next line */
   word-wrap: break-word; /* Breaks long words */
   overflow-wrap: break-word; /* Ensures long words wrap */
+  font-size: 1.1rem; /* Increases the font size for better readability */
 }
 
 #answerBox p {
