@@ -1,7 +1,7 @@
 # VLM Demo
 This project is a demo of the VLM (Video Language Model) model. The VLM model is a multimodal model that combines video and text data to generate image or video captions.
 
-![image](https://github.com/user-attachments/assets/41bf9378-07b6-44d1-b6f3-233e19ff5b5f)
+![Sample App](attachments/vlm_sample.png)
 
 Setup guide for running in:
 - [Usual Windows, Mac, or Linux with GPU](#usual-pc-with-gpu)
@@ -27,6 +27,7 @@ Note: If you wish to change the model used, you can:
 5. Go to the application url using your browser and allow the application to access your camera
 
 ## Edge Device like Jetson Nano
+![Jetson Orin Nano](attachments/jetson_orin_nano.jpg)
 1. Setup the microSD card with the Jetson Nano image using the [official guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit)
 2. Clone the repository
 3. Create a virtual environment using `python -m venv .venv`
