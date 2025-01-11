@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
           }
 
           finalText = "Prompt: " + prompt + "\n\n" + finalText;
-          finalText = finalText.replace("assitant", "Response:");
+          finalText = finalText.replace("assistant", "Response:");
 
           answerBox.innerHTML = "";
 
