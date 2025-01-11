@@ -115,15 +115,33 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
           let finalText = data.answer;
 
-          const assistantIndex = finalText.indexOf("Assistant:");
+          const assistantIndex = finalText.indexOf("assistant");
           if (assistantIndex !== -1) {
             finalText = finalText.substring(assistantIndex);
           }
 
           finalText = "Prompt: " + prompt + "\n\n" + finalText;
-          finalText = finalText.replace("Assistant:", "Response:");
+          finalText = finalText.replace("assitant", "Response:");
 
-          answerBox.innerText = finalText;
+          answerBox.innerHTML = "";
+
+          const imgElement = document.createElement("img");
+          imgElement.src = base64Image;
+          imgElement.alt = "Captured Image";
+          // Set fixed width to make the image small
+          imgElement.style.width = "200px"; // Adjust the value as needed
+          imgElement.style.height = "auto"; // Maintains aspect ratio
+          imgElement.style.marginBottom = "10px"; // Optional: Adds space below the image
+          answerBox.appendChild(imgElement);
+
+          const textElement = document.createElement("pre");
+          textElement.textContent = finalText;
+
+          textElement.style.whiteSpace = "pre-wrap"; // Ensures text wraps to the next line
+          textElement.style.wordWrap = "break-word"; // Breaks long words
+          textElement.style.overflowWrap = "break-word"; // Ensures long words wrap
+
+          answerBox.appendChild(textElement);
         }
       })
       .catch(err => {

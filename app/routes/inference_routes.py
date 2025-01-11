@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 import base64
-from app.services.smolvlm_inference import run_inference
+from app.services.llava_inference import run_inference
 
 inference_bp = Blueprint("inference_bp", __name__)
 

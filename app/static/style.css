@@ -125,15 +125,19 @@ h1 {
 }
 
 #answerBox {
-  border: 2px dashed #aaa;
-  background-color: #fff;
-  padding: 10px;
-  min-height: 80px;
-  max-width: 610px;        /* remove any fixed max-width constraints */
-  box-sizing: border-box;
-  overflow-wrap: break-word;
-  line-height: 1.2;
-  color: #000;  
+  white-space: pre-wrap; /* Allows text wrapping while preserving newlines */
+  word-wrap: break-word; /* Ensures long words break to fit within the container */
+  overflow-wrap: break-word; /* Break long words */
+  border: 1px solid #ddd; /* Optional: Adds a border for clarity */
+  padding: 10px; /* Adds padding for readability */
+  margin-top: 20px;
+  max-width: 600px; /* Optional: Limits the width of the box */
+}
+
+#answerBox pre {
+  white-space: pre-wrap; /* Ensures text wraps to the next line */
+  word-wrap: break-word; /* Breaks long words */
+  overflow-wrap: break-word; /* Ensures long words wrap */
 }
 
 #answerBox p {
