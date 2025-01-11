@@ -3,6 +3,10 @@ This project is a demo of the VLM (Video Language Model) model. The VLM model is
 
 ![Sample App](attachments/vlm_sample.png)
 
+Models explored in this project:
+- [SmolVLM](https://huggingface.co/blog/smolvlm)
+- [LLaVA-OneVision](https://huggingface.co/lmms-lab/llava-onevision-qwen2-7b-ov)
+
 Setup guide for running in:
 - [Usual Windows, Mac, or Linux with GPU](#usual-pc-with-gpu)
 - [Edge Device like Jetson Nano using ARM architecture](#edge-device-like-jetson-nano)
